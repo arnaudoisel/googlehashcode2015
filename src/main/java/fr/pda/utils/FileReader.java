@@ -59,7 +59,7 @@ public class FileReader {
         int j = 0;
         for (Serveur serveur : lsorted){
         	int colonne = -1;
-        	colonne = centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	colonne = centre.tRangee[(noServer+j)%centre.nbRangee].addServeur(serveur);
         	while (colonne==-1 && j<centre.nbRangee){
         		j++;
         		colonne = centre.tRangee[(noServer+j)%centre.nbRangee].addServeur(serveur);   		
@@ -67,8 +67,17 @@ public class FileReader {
         	if (colonne!=-1){
         	Group groupFaible = Group.getGroupFaible(centre.tGroup);
         	groupFaible.add(serveur, (noServer+j)%centre.nbRangee);
-        	//Group.getGroupFaible(groups)
+        	Group groupFaible2 = Group.getGroupFaible(centre.tGroup);
         	serveur.groupe=groupFaible.id;
+        	if(groupFaible.id==groupFaible2.id){
+        		System.out.println("FAIL" + String.valueOf(groupFaible2.id));
+        		groupFaible.remove(serveur, (noServer+j)%centre.nbRangee);
+        		Group groupFaible3 = Group.getGroupFaible(centre.tGroup,groupFaible);
+            	groupFaible3.add(serveur, (noServer+j)%centre.nbRangee);
+            	serveur.groupe=groupFaible3.id;
+        	}
+        	//Group.getGroupFaible(groups)
+        	
         	serveur.y=(noServer+j)%centre.nbRangee;
         	serveur.x=colonne;
         	serveur.use=true;
@@ -80,7 +89,7 @@ public class FileReader {
         for (Serveur serveur : lServeur) {
         	if (!serveur.indispo) {
 				if (serveur.use) {
-					aLines.add(String.valueOf(serveur.id) +" " + String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
+					aLines.add(String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
 				} else {
 					aLines.add("x");
 				}
@@ -91,8 +100,8 @@ public class FileReader {
         
         log("out");
         
-        for (Rangee rangee : centre.tRangee) {
-        	System.out.println(rangee.toString());
+        for (int i =0; i<centre.tRangee.length ; i++) {
+        	System.out.println(String.valueOf(i) + ":" + centre.tRangee[i].toString());
 		}
     }
 

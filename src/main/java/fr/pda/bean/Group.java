@@ -27,6 +27,11 @@ public class Group {
         serveurs.add(serveur);
         capacites[rangee] += serveur.nbCapacite;
     }
+    
+    public void remove(Serveur serveur, int rangee) {
+        serveurs.remove(serveur);
+        capacites[rangee] -= serveur.nbCapacite;
+    }
 
     public static Group getGroupFaible(Group[] groups) {
     	Group groupMin = null;
@@ -39,15 +44,37 @@ public class Group {
 		}
         return groupMin;
     }
-
-    public int getSommeCapaciteSaufPlusForte() {
-    	int min = -1;
-    	for (int i = 0; i < capacites.length; i++) {
-    		if (min==-1 || min>capacites[i]) {
-    			min = capacites[i];
+    
+    public static Group getGroupFaible(Group[] groups, Group group2) {
+    	Group groupMin = null;
+    	for (Group group : groups) {
+    		if(group.id!=group2.id){
+				if(group.getSommeCapaciteSaufPlusForte() == -1) return group;
+				
+				if (groupMin == null || groupMin.getSommeCapaciteSaufPlusForte()>group.getSommeCapaciteSaufPlusForte()) {
+					groupMin = group;
+				}
     		}
 		}
-        return min;
+        return groupMin;
+    }
+
+    public int getSommeCapaciteSaufPlusForte() {
+    	int somme = 0;
+    	int max = -1;
+    	for (int i = 0; i < capacites.length; i++) {
+    		if (max==-1 || max<capacites[i]) {
+    			max = capacites[i];
+    		}
+    		somme += capacites[i];
+		}
+    	System.out.println("ETST : " + String.valueOf(this.id) + " " + String.valueOf(somme-max));
+    	
+    	if(somme==0){
+    		return -1;
+    	}
+    	
+        return somme-max;
     }
 
 
