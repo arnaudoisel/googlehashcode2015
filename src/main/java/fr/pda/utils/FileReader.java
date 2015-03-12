@@ -36,7 +36,7 @@ public class FileReader {
             		log(centre.toString());
             	}else if (nb_ligne<1+centre.nbIndispo) {
             		String[] indispo = ligne.split(" ");
-            		lServeur.add(new Serveur(Integer.valueOf(indispo[0]),Integer.valueOf(indispo[1])));
+            		lServeur.add(new Serveur(Integer.valueOf(indispo[1]),Integer.valueOf(indispo[0])));
             	} else {
 	            	lServeur.add(new Serveur(ligne.split(" ")));
             	}
