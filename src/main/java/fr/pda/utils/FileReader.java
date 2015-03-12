@@ -54,11 +54,12 @@ public class FileReader {
         //algo
         List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
         int noServer = 0;
-        for (int i=0;i<centre.nbGroup;i++){
-        	centre.tRangee[i%16].addServeur(lsorted.get(noServer));
-        	lsorted.get(noServer).groupe=i;
+        for (Serveur serveur : lsorted){
+        	centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
         	noServer++;   
+
         }
+
         
         for (Serveur serveur : lServeur) {
         	if (!serveur.indispo) {
