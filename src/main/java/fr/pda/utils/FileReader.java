@@ -55,12 +55,10 @@ public class FileReader {
         List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
         int noServer = 0;
         for (Serveur serveur : lsorted){
-        	centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	serveur.x=centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
         	serveur.groupe=noServer%centre.nbGroup;
-        	serveur.x=;
-        	serveur.y=;
+        	serveur.y=noServer%centre.nbRangee;
         	noServer++;   
-
         }
 
         
