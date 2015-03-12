@@ -25,7 +25,7 @@ public class Centre {
 		
 		tGroup = new Group[nbGroup];
 		for (int i = 0; i < nbGroup; i++) {
-			tGroup[i] = new Group(nbRangee);
+			tGroup[i] = new Group(nbRangee, i);
 		}
 	}
 	

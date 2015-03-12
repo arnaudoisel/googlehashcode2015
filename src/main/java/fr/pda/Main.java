@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String [] args) throws IOException
 	{
-		FileReader.readLargerTextFile("entree.txt");
+		FileReader.readLargerTextFile("input.in");
 	}
 	
 }

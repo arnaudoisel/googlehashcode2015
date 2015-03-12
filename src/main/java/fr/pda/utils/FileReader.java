@@ -55,18 +55,21 @@ public class FileReader {
         //algo
         List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
         int noServer = 0;
+        int j = 0;
         for (Serveur serveur : lsorted){
-        	int rangee = -1;
-        	rangee = centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
-        	while (rangee==-1){
-            	rangee = centre.tRangee[noServer%centre.nbRangee+1].addServeur(serveur);   		
+        	int colonne = -1;
+        	colonne = centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	while (colonne==-1 && j<centre.nbRangee){
+        		j++;
+        		colonne = centre.tRangee[(noServer+j)%centre.nbRangee].addServeur(serveur);   		
         	}
-        	if (rangee!=-1){
-        	Group.getGroupFaible(centre.tGroup).add(serveur, serveur.x);
+        	if (colonne!=-1){
+        	Group groupFaible = Group.getGroupFaible(centre.tGroup);
+        	groupFaible.add(serveur, serveur.x);
         	//Group.getGroupFaible(groups)
-        	serveur.groupe=noServer%centre.nbGroup;
-        	serveur.y=noServer%centre.nbRangee;
-        	serveur.x=rangee;
+        	serveur.groupe=groupFaible.id;
+        	serveur.y=(noServer+j)%centre.nbRangee;
+        	serveur.x=colonne;
         	serveur.use=true;
         	noServer++;   
         	}
@@ -85,6 +88,7 @@ public class FileReader {
         
         FileWriter.writeLargerTextFile("out.txt", aLines);
         
+        log("out");
     }
 
     private static void log(Object aMsg){

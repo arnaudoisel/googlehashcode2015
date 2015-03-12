@@ -15,7 +15,8 @@ public class Group {
 
     private int[] capacites;
 
-    public Group(int nbRangees) {
+    public Group(int nbRangees, int id) {
+    	this.id = id;
         capacites = new int[nbRangees];
         for (int i = 0; i < nbRangees; i++) {
         	capacites[i] = 0;
@@ -27,7 +28,7 @@ public class Group {
         capacites[rangee] += serveur.nbCapacite;
     }
 
-    public static Group getGroupFaible(List<Group> groups) {
+    public static Group getGroupFaible(Group[] groups) {
     	Group groupMin = null;
     	for (Group group : groups) {
 			if(group.getSommeCapaciteSaufPlusForte() == -1) return group;
