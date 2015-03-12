@@ -65,7 +65,7 @@ public class FileReader {
         	}
         	if (colonne!=-1){
         	Group groupFaible = Group.getGroupFaible(centre.tGroup);
-        	groupFaible.add(serveur, serveur.x);
+        	groupFaible.add(serveur, (noServer+j)%centre.nbRangee);
         	//Group.getGroupFaible(groups)
         	serveur.groupe=groupFaible.id;
         	serveur.y=(noServer+j)%centre.nbRangee;
