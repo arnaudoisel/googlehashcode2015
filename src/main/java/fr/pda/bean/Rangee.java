@@ -11,5 +11,9 @@ public class Rangee {
 	public void addIndispo(int x){
 		tUse[x] = true;
 	}
+	
+	public int addServeur(Serveur serveur){
+		return 0;
+	}
 
 }
