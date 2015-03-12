@@ -15,7 +15,7 @@ public class Serveur {
 	
 	
 	/**
-	 * Création serveur
+	 * Crï¿½ation serveur
 	 * @param tab
 	 */
 	public Serveur(String[] tab){
@@ -25,7 +25,7 @@ public class Serveur {
 	}
 	
 	/**
-	 * Création indispo
+	 * Crï¿½ation indispo
 	 * @param tab
 	 */
 	public Serveur(int x, int y){
@@ -33,7 +33,6 @@ public class Serveur {
 		this.x=x;
 		this.y=y;
 	}
-	
-	
+
 
 }
