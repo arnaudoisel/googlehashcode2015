@@ -13,13 +13,13 @@ public class Group {
 
     private Set<Serveur> serveurs = new HashSet<Serveur>();
 
-    private int[] capacites ;
+    private int[] capacites;
 
     public Group(int nbRangees) {
         capacites = new int[nbRangees];
     }
 
-    public void add(Serveur serveur) {
+    public void add(Serveur serveur, int rangee) {
         serveurs.add(serveur);
     }
 
