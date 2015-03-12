@@ -45,6 +45,12 @@ public class FileReader {
             }
         }
         
+        for (Serveur serveur : lServeur) {
+        	if (serveur.indispo) {
+				centre.tRangee[serveur.y].addIndispo(serveur.x);
+        	}
+		}
+        
         //algo
         
         for (Serveur serveur : lServeur) {

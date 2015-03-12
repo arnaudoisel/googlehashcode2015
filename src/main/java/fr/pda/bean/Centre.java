@@ -8,6 +8,8 @@ public class Centre {
 	public int nbGroup;
 	public int nbServeur;
 	
+	public Rangee[] tRangee;
+	
 	public Centre (String[] tab){
 		nbRangee = Integer.valueOf(tab[0]);
 		nbEmplacement = Integer.valueOf(tab[1]);
