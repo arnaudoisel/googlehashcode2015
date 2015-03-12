@@ -56,6 +56,9 @@ public class FileReader {
         int noServer = 0;
         for (Serveur serveur : lsorted){
         	centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	serveur.groupe=noServer%centre.nbGroup;
+        	serveur.x=;
+        	serveur.y=;
         	noServer++;   
 
         }
