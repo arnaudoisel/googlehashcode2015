@@ -58,10 +58,10 @@ public class FileReader {
         for (Serveur serveur : lsorted){
         	int rangee = -1;
         	rangee = centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
-        	if (rangee==-1){
-        		
+        	while (rangee==-1){
+            	rangee = centre.tRangee[noServer%centre.nbRangee+1].addServeur(serveur);   		
         	}
-        	else{
+        	if (rangee!=-1){
         	Group.getGroupFaible(centre.tGroup).add(serveur, serveur.x);
         	//Group.getGroupFaible(groups)
         	serveur.groupe=noServer%centre.nbGroup;
