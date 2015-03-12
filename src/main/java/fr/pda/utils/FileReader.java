@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.pda.bean.Centre;
+import fr.pda.bean.Group;
 import fr.pda.bean.Serveur;
 
 /**
@@ -55,10 +56,20 @@ public class FileReader {
         List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
         int noServer = 0;
         for (Serveur serveur : lsorted){
-        	serveur.x=centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	int rangee = -1;
+        	rangee = centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	if (rangee==-1){
+        		
+        	}
+        	else{
+        	Group.getGroupFaible(centre.tGroup).add(serveur, serveur.x);
+        	//Group.getGroupFaible(groups)
         	serveur.groupe=noServer%centre.nbGroup;
         	serveur.y=noServer%centre.nbRangee;
+        	serveur.x=rangee;
+        	serveur.use=true;
         	noServer++;   
+        	}
         }
 
         
