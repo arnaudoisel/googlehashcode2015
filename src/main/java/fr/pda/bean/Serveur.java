@@ -5,8 +5,9 @@ package fr.pda.bean;
  *
  */
 public class Serveur implements Comparable<Serveur> {
-	
-	public boolean indispo;
+
+
+    public boolean indispo;
 	public boolean use;
 	public int nbEmplacement;
 	public int nbCapacite;
@@ -44,5 +45,19 @@ public class Serveur implements Comparable<Serveur> {
         if (ratio == o.ratio)
             return 0;
         return (int)Math.round(ratio - o.ratio);
+    }
+
+    @Override
+    public String toString() {
+        return "Serveur{" +
+                "indispo=" + indispo +
+                ", use=" + use +
+                ", nbEmplacement=" + nbEmplacement +
+                ", nbCapacite=" + nbCapacite +
+                ", ratio=" + ratio +
+                ", x=" + x +
+                ", y=" + y +
+                ", groupe=" + groupe +
+                '}';
     }
 }

@@ -1,6 +1,10 @@
 package fr.pda;
 
 import fr.pda.bean.Serveur;
+import fr.pda.utils.ServeurUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arnaud on 12/03/15.
@@ -13,9 +17,11 @@ public class LocalMain {
         System.out.println(serveur1.ratio);
         Serveur serveur2 = new Serveur(new String[]{"50","40"});
         System.out.println(serveur2.ratio);
-        System.out.println(Double.valueOf(serveur1.ratio - serveur2.ratio));
 
-        System.out.println(serveur1.compareTo(serveur2));
+        List<Serveur> serveurs = new ArrayList<Serveur>();
+        serveurs.add(serveur1);
+        serveurs.add(serveur2);
+        System.out.println(ServeurUtils.sortByRatio(serveurs));
     }
 
 }
