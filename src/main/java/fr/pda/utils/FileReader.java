@@ -46,6 +46,8 @@ public class FileReader {
         }
         
         //algo
+        List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
+        
         
         for (Serveur serveur : lServeur) {
         	if (!serveur.indispo) {
