@@ -33,25 +33,34 @@ public class FileReader {
             	if (nb_ligne==0) {
             		centre = new Centre(ligne.split(" "));
             		log(centre.toString());
-            	}
-            	if (nb_ligne<=1+centre.nbIndispo) {
+            	}else if (nb_ligne<1+centre.nbIndispo) {
             		String[] indispo = ligne.split(" ");
             		lServeur.add(new Serveur(Integer.valueOf(indispo[0]),Integer.valueOf(indispo[1])));
+            	} else {
+	            	lServeur.add(new Serveur(ligne.split(" ")));
             	}
-            	lServeur.add(new Serveur(ligne.split(" ")));
-                //process each line in some way
-                log(ligne);
+            	log(ligne);
                 nb_ligne++;
             }
         }
         
         for (Serveur serveur : lServeur) {
         	if (serveur.indispo) {
+        		log(String.valueOf(serveur.y));
 				centre.tRangee[serveur.y].addIndispo(serveur.x);
         	}
 		}
         
         //algo
+        List<Serveur> lsorted = ServeurUtils.sortByRatio(lServeur);
+        int noServer = 0;
+        for (Serveur serveur : lsorted){
+        	serveur.x=centre.tRangee[noServer%centre.nbRangee].addServeur(serveur);
+        	serveur.groupe=noServer%centre.nbGroup;
+        	serveur.y=noServer%centre.nbRangee;
+        	noServer++;   
+        }
+
         
         for (Serveur serveur : lServeur) {
         	if (!serveur.indispo) {

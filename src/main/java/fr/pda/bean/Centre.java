@@ -16,6 +16,11 @@ public class Centre {
 		nbIndispo = Integer.valueOf(tab[2]);
 		nbGroup = Integer.valueOf(tab[3]);
 		nbServeur = Integer.valueOf(tab[4]);
+		
+		tRangee = new Rangee[nbRangee];
+		for (int i = 0; i < nbRangee; i++) {
+			tRangee[i] = new Rangee(nbEmplacement);
+		}
 	}
 	
 	public String toString(){
