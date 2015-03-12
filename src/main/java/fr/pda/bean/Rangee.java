@@ -2,7 +2,7 @@ package fr.pda.bean;
 
 public class Rangee {
 	
-	String[] tUse;
+	public String[] tUse;
 	
 	public Rangee(int taille){
 		tUse = new String[taille];
