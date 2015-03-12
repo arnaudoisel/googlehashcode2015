@@ -17,18 +17,36 @@ public class Group {
 
     public Group(int nbRangees) {
         capacites = new int[nbRangees];
+        for (int i = 0; i < nbRangees; i++) {
+        	capacites[i] = 0;
+		}
     }
 
     public void add(Serveur serveur, int rangee) {
         serveurs.add(serveur);
+        capacites[rangee] += serveur.nbCapacite;
     }
 
     public static Group getGroupFaible(List<Group> groups) {
-        return null;
+    	Group groupMin = null;
+    	for (Group group : groups) {
+			if(group.getSommeCapaciteSaufPlusForte() == -1) return group;
+			
+			if (groupMin == null || groupMin.getSommeCapaciteSaufPlusForte()>group.getSommeCapaciteSaufPlusForte()) {
+				groupMin = group;
+			}
+		}
+        return groupMin;
     }
 
     public int getSommeCapaciteSaufPlusForte() {
-        return -1;
+    	int min = -1;
+    	for (int i = 0; i < capacites.length; i++) {
+    		if (min==-1 || min>capacites[i]) {
+    			min = capacites[i];
+    		}
+		}
+        return min;
     }
 
 
