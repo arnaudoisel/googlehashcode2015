@@ -62,7 +62,7 @@ public class FileReader {
         }
 
         
-        for (Serveur serveur : lServeur) {
+        for (Serveur serveur : lsorted) {
         	if (!serveur.indispo) {
 				if (serveur.use) {
 					aLines.add(String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
