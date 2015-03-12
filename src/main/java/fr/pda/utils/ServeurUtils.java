@@ -3,6 +3,7 @@ package fr.pda.utils;
 import fr.pda.bean.Serveur;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,10 +16,9 @@ public class ServeurUtils {
         if (serveurs == null )
             throw new IllegalArgumentException("Serveurs should not be null");
 
-        List<Serveur> sortedServeurs = new ArrayList<Serveur>();
+        List<Serveur> sortedServeurs = new ArrayList<Serveur>(serveurs);
 
-
-
+        Collections.sort(sortedServeurs);
 
         return sortedServeurs;
     }
