@@ -7,6 +7,7 @@ package fr.pda.bean;
 public class Serveur {
 	
 	public boolean indispo;
+	public boolean use;
 	public int nbEmplacement;
 	public int nbCapacite;
 	

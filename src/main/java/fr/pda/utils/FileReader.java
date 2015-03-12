@@ -24,6 +24,7 @@ public class FileReader {
         
         Centre centre = null;
         List<Serveur> lServeur = new ArrayList<Serveur>();
+        List<String> aLines = new ArrayList<String>();
         
         try (Scanner scanner =  new Scanner(path, ENCODING.name())){
         	int nb_ligne=0;
@@ -43,6 +44,21 @@ public class FileReader {
                 nb_ligne++;
             }
         }
+        
+        //algo
+        
+        for (Serveur serveur : lServeur) {
+        	if (!serveur.indispo) {
+				if (serveur.use) {
+					aLines.add(String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
+				} else {
+					aLines.add("x");
+				}
+        	}
+		}
+        
+        FileWriter.writeLargerTextFile("out.txt", aLines);
+        
     }
 
     private static void log(Object aMsg){
