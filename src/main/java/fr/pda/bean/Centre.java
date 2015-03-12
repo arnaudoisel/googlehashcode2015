@@ -9,6 +9,7 @@ public class Centre {
 	public int nbServeur;
 	
 	public Rangee[] tRangee;
+	public Group[] tGroup;
 	
 	public Centre (String[] tab){
 		nbRangee = Integer.valueOf(tab[0]);
@@ -20,6 +21,11 @@ public class Centre {
 		tRangee = new Rangee[nbRangee];
 		for (int i = 0; i < nbRangee; i++) {
 			tRangee[i] = new Rangee(nbEmplacement);
+		}
+		
+		tGroup = new Group[nbGroup];
+		for (int i = 0; i < nbGroup; i++) {
+			tGroup[i] = new Group(nbRangee);
 		}
 	}
 	
