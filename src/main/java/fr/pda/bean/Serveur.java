@@ -17,17 +17,19 @@ public class Serveur implements Comparable<Serveur> {
 	public int y;
 	
 	public int groupe;
+	public int id;
 	
 	
 	/**
 	 * Cr�ation serveur
 	 * @param tab
 	 */
-	public Serveur(String[] tab){
+	public Serveur(String[] tab, int id){
 		indispo = false;
 		nbEmplacement = Integer.valueOf(tab[0]);
 		nbCapacite = Integer.valueOf(tab[1]);
         ratio = (double)nbCapacite / (double)nbEmplacement;
+        this.id = id;
 	}
 	
 	/**

@@ -2,14 +2,14 @@ package fr.pda.bean;
 
 public class Rangee {
 	
-	public Boolean[] tUse;
+	public String[] tUse;
 	
 	public Rangee(int taille){
-		tUse = new Boolean[taille];
+		tUse = new String[taille];
 	}
 	
 	public void addIndispo(int x){
-		tUse[x] = true;
+		tUse[x] = "x";
 	}
 	
 	public int addServeur(Serveur serveur){
@@ -24,13 +24,21 @@ public class Rangee {
 				}
 				if (ok) {
 					for (int j = i; j < i+taille; j++) {
-						tUse[j]=true;
+						tUse[j]=String.valueOf(serveur.id);
 					}
 					return i;
 				}
 			}
 		}
 		return -1;
+	}
+	
+	public String toString(){
+		String str = "";
+		for (String string : tUse) {
+			str+=" "+ string;
+		}
+		return str;
 	}
 
 }

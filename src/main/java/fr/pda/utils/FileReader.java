@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import fr.pda.bean.Centre;
 import fr.pda.bean.Group;
+import fr.pda.bean.Rangee;
 import fr.pda.bean.Serveur;
 
 /**
@@ -29,6 +30,7 @@ public class FileReader {
         
         try (Scanner scanner =  new Scanner(path, ENCODING.name())){
         	int nb_ligne=0;
+        	int serveur=0;
             while (scanner.hasNextLine()){
             	String ligne = scanner.nextLine();
             	if (nb_ligne==0) {
@@ -38,17 +40,16 @@ public class FileReader {
             		String[] indispo = ligne.split(" ");
             		lServeur.add(new Serveur(Integer.valueOf(indispo[1]),Integer.valueOf(indispo[0])));
             	} else {
-	            	lServeur.add(new Serveur(ligne.split(" ")));
+	            	lServeur.add(new Serveur(ligne.split(" "),serveur));
+	            	serveur++;
             	}
-            	log(ligne);
-                nb_ligne++;
+            	nb_ligne++;
             }
         }
         
         for (Serveur serveur : lServeur) {
         	if (serveur.indispo) {
-        		log(String.valueOf(serveur.y));
-				centre.tRangee[serveur.y].addIndispo(serveur.x);
+        		centre.tRangee[serveur.y].addIndispo(serveur.x);
         	}
 		}
         
@@ -79,7 +80,7 @@ public class FileReader {
         for (Serveur serveur : lServeur) {
         	if (!serveur.indispo) {
 				if (serveur.use) {
-					aLines.add(String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
+					aLines.add(String.valueOf(serveur.id) +" " + String.valueOf(serveur.y) + " " + String.valueOf(serveur.x) + " " + String.valueOf(serveur.groupe));
 				} else {
 					aLines.add("x");
 				}
@@ -89,6 +90,10 @@ public class FileReader {
         FileWriter.writeLargerTextFile("out.txt", aLines);
         
         log("out");
+        
+        for (Rangee rangee : centre.tRangee) {
+        	System.out.println(rangee.toString());
+		}
     }
 
     private static void log(Object aMsg){
