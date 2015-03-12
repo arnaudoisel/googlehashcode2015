@@ -1,13 +1,17 @@
 package fr.pda;
 
+import java.io.IOException;
+
+import fr.pda.utils.FileReader;
+
 /**
  * Created by Arnaud on 09/03/15.
  */
 public class Main {
 	
-	public static void main(String [] args)
+	public static void main(String [] args) throws IOException
 	{
-		System.out.println("test");
+		FileReader.readLargerTextFile("entree.txt");
 	}
 	
 }
