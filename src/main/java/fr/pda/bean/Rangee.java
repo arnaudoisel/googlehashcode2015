@@ -18,7 +18,7 @@ public class Rangee {
 			if(tUse[i]==null){
 				boolean ok = true;
 				for (int j = i; j < i+taille; j++) {
-					if (tUse[j]!=null) {
+					if (j>=tUse.length || tUse[j]!=null) {
 						ok=false;
 					}
 				}
